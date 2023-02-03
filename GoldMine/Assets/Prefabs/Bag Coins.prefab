@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6898062049493744217}
   - component: {fileID: 6898062049493744218}
   - component: {fileID: 6898062049493744219}
-  - component: {fileID: 6898062049493744221}
   m_Layer: 0
   m_Name: Bag Coins
   m_TagString: Gold
@@ -139,15 +138,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 2
---- !u!114 &6898062049493744221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6898062049493744214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceed0daea6b98ca4cbd108ad380d8c2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

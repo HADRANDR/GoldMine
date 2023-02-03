@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7905454795523935497}
   - component: {fileID: 7905454795523935498}
   - component: {fileID: 7905454795523935499}
-  - component: {fileID: 7905454795523935501}
   m_Layer: 0
   m_Name: Blue gem
   m_TagString: Diamond
@@ -139,15 +138,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 1.25
---- !u!114 &7905454795523935501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7905454795523935494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceed0daea6b98ca4cbd108ad380d8c2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
