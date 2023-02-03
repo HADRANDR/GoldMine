@@ -64,13 +64,13 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            for (int i = 0; i < _instantiateValue1; i++)
+            for (int i = 0; i < _instantiateValue2; i++)
             {
                 _randomX = Random.Range(-7, 7);
                 _randomY = Random.Range(-4, -23);
                 Instantiate(prefabs[1], new Vector3(_randomX, _randomY, -0.1f), Quaternion.identity);
             }
-            for (int i = 0; i < _instantiateValue2; i++)
+            for (int i = 0; i < _instantiateValue1; i++)
             {
                 _randomX = Random.Range(-7, 7);
                 _randomY = Random.Range(-4, -23);
