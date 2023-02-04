@@ -1,45 +1,42 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ObjectControl : MonoBehaviour
 {
-    [SerializeField]public int _explodeControl;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    #region Functions
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.CompareTag("Gold") || collision.CompareTag("Diamond"))    
+        if (HookTrigger.child == false && !collision.CompareTag("Hook"))   // Kanca ile maden tutmadıysam ve Madenlere çarpan şey Kanca değilse.
         {
-            var collider = collision.gameObject.GetComponents<BoxCollider2D>()[1];
-            collider.enabled = true;
+            var collider = collision.gameObject.GetComponents<BoxCollider2D>()[1]; // Madenlerin içerisindeki 2. Box Collider componentine ulaş
+            collider.enabled = true; // Componenti aktifleştir.
+
+            int _shakeControl = 1; // Madenlerin Trigger tarafından yakalanması için her madeni sadece 1 kez hareket ettiriyorum.
+            for (int i = 0; i < _shakeControl; i++)
+            {
+                collision.gameObject.transform.DOShakePosition(0.01f);
+            }
+
+
+            Invoke(nameof(DestroyMine), 2f); // 2. box colliderı  aktifleşen maden objelerinin SetActive = false yapıyorum. 
         }
-        
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Hook") && !this.gameObject.CompareTag("TNT"))   // Madenlere çarpan şey Hook ise ve Madenlere çarpan şey TNT değilse 
+        {
+            BoxCollider2D boxCollider2D = this.gameObject.GetComponent<BoxCollider2D>();
+            boxCollider2D.isTrigger = true; // Kancaya yakalanan madenlerin başka madenlerle çarpışmaması, birleşmemesi için Trigger'i aktifleştiriyorum.
+        }
+    }
+    void DestroyMine() // TNT yoluyla zincirleme reaksiyona uğrayan maden objelerini sahneden kaldır.
+    {
+        this.gameObject.SetActive(false);
     }
 
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Debug.Log("imdaredt");
-    //    if (collision.collider.CompareTag("Gold") || collision.collider.CompareTag("Diamond"))
-    //    {
-    //        var collider = collision.gameObject.GetComponents<BoxCollider2D>()[1];
-    //        collider.enabled = !collider.enabled;
-    //        Debug.Log("imdat");
-    //    }
-    //}
-
+    #endregion
 
 }

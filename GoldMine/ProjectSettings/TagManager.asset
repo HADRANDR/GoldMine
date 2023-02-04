@@ -9,6 +9,7 @@ TagManager:
   - Gold
   - Diamond
   - TNT
+  - Hook
   layers:
   - Default
   - TransparentFX

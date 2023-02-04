@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class GameManager : Singleton<GameManager>
 {
-    int _randomX, _randomY, _instantiateValue1, _instantiateValue2;
-    [SerializeField] GameObject[] prefabs;
     [HideInInspector] public UnityEvent GameStart = new();
     [HideInInspector] public UnityEvent GameReady = new();
     [HideInInspector] public UnityEvent GameEnd = new();
@@ -41,13 +39,16 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    #region MineCreator
+    int _randomX, _randomY, _instantiateValue1, _instantiateValue2; // Sahnedeki objelerin rastgele bir şekilde oluşmasını sağlar.
+    [SerializeField] GameObject[] prefabs; // Maden prefableri.
     private void Awake()
     {
         LoadData();
-        _instantiateValue1 = Random.Range(1, 6);
+        _instantiateValue1 = Random.Range(1, 6);                // Maden yaratma sistemi
         _instantiateValue2 = Random.Range(1, 6);
 
-        if (_instantiateValue1 > _instantiateValue2)
+        if (_instantiateValue1 > _instantiateValue2)        // Büyük olan sayıya altını atadım ki altın madeni daha çok çıksın.
         {
             for (int i = 0; i < _instantiateValue1; i++)
             {
@@ -68,16 +69,18 @@ public class GameManager : Singleton<GameManager>
             {
                 _randomX = Random.Range(-7, 7);
                 _randomY = Random.Range(-4, -23);
-                Instantiate(prefabs[1], new Vector3(_randomX, _randomY, -0.1f), Quaternion.identity);
+                Instantiate(prefabs[0], new Vector3(_randomX, _randomY, -0.1f), Quaternion.identity);
             }
             for (int i = 0; i < _instantiateValue1; i++)
             {
                 _randomX = Random.Range(-7, 7);
                 _randomY = Random.Range(-4, -23);
-                Instantiate(prefabs[0], new Vector3(_randomX, _randomY, -0.1f), Quaternion.identity);
+                Instantiate(prefabs[1], new Vector3(_randomX, _randomY, -0.1f), Quaternion.identity);
             }
         }
     }
+    #endregion
+
 
     public void LevelState(bool value)
     {
