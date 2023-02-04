@@ -46,13 +46,13 @@ public class HingeCycle : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             mouseDown = true;
-            MouseClick();
         }
 
-    }
 
-    void MouseClick()
-    {
+
+
+
+
         if (mouseDown == true) // tıklandıysa.
         {
 
@@ -109,7 +109,9 @@ public class HingeCycle : MonoBehaviour
                 }
             }
         }
+
     }
+
 
     #endregion
 
